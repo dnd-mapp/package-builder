@@ -65,12 +65,15 @@
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "catalog:commitlint",
+    "@dnd-mapp/config-commitlint": "catalog:commitlint",
     "@dnd-mapp/config-markdown": "catalog:markdown",
     "@dnd-mapp/config-prettier": "catalog:prettier",
     "@dnd-mapp/config-typescript": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:vitest",
     "@vitest/ui": "catalog:vitest",
+    "lefthook": "catalog:commitlint",
     "markdownlint-cli2": "catalog:markdown",
     "prettier": "catalog:prettier",
     "prettier-plugin-organize-imports": "catalog:prettier",
