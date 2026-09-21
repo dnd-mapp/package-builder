@@ -1,0 +1,62 @@
+{
+  "$schema": "https://www.schemastore.org/package.json",
+  "name": "@dnd-mapp/package-builder",
+  "description": "",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "author": "D&D Mapp",
+  "keywords": [],
+  "homepage": "https://github.com/dnd-mapp/package-builder#readme",
+  "bugs": {
+    "url": "https://github.com/dnd-mapp/package-builder/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnd-mapp/package-builder.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "exports": {},
+  "scripts": {
+    "prepublishOnly": "node src/prepare-dist.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest --ui",
+    "test-ci": "vitest run",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint-md": "markdownlint-cli2",
+    "format": "prettier -w .",
+    "format-check": "prettier -c ."
+  },
+  "engines": {
+    "node": "^24.21.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.21.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.4.2",
+      "onFail": "error"
+    }
+  },
+  "devDependencies": {
+    "@dnd-mapp/config-markdown": "catalog:markdown",
+    "@dnd-mapp/config-prettier": "catalog:prettier",
+    "@dnd-mapp/config-typescript": "catalog:",
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:vitest",
+    "@vitest/ui": "catalog:vitest",
+    "markdownlint-cli2": "catalog:markdown",
+    "prettier": "catalog:prettier",
+    "prettier-plugin-organize-imports": "catalog:prettier",
+    "typescript": "catalog:",
+    "vite": "catalog:vitest",
+    "vitest": "catalog:vitest"
+  }
+}

@@ -1,0 +1,39 @@
+# Dependency Resolution Settings
+minimumReleaseAge: 4320 # 3 days
+minimumReleaseAgeExclude:
+  - "@dnd-mapp/*"
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 4320 # 3 days
+
+# Peer Dependency Settings
+autoInstallPeers: false
+dedupePeers: true
+strictPeerDependencies: true
+
+# CLI Settings
+engineStrict: true
+
+# Build Settings
+allowBuilds: {}
+
+# Other Settings
+catalogMode: "strict"
+savePrefix: "~"
+
+catalog:
+  "@dnd-mapp/config-typescript": ~1.0.0
+  "@types/node": ~24.13.5
+  typescript: ~6.0.3
+catalogs:
+  markdown:
+    "@dnd-mapp/config-markdown": ~1.0.0
+    markdownlint-cli2: ~0.23.2
+  prettier:
+    "@dnd-mapp/config-prettier": ~1.1.0
+    prettier: ~3.9.7
+    prettier-plugin-organize-imports: ~4.3.0
+  vitest:
+    "@vitest/coverage-v8": ~5.0.1
+    "@vitest/ui": ~5.0.1
+    vite: ~8.3.0
+    vitest: ~5.0.1
