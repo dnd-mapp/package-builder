@@ -19,6 +19,9 @@
     "access": "public",
     "directory": "dist"
   },
+  "bin": {
+    "prepare-dist": "./prepare-dist.js"
+  },
   "exports": {},
   "scripts": {
     "prepublishOnly": "node src/prepare-dist.ts",

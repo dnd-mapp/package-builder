@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Prepares the `dist` directory that gets published to npm.
  *
