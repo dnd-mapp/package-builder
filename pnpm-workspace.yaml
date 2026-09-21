@@ -14,7 +14,8 @@ strictPeerDependencies: true
 engineStrict: true
 
 # Build Settings
-allowBuilds: { lefthook: true }
+allowBuilds:
+  lefthook: true
 
 # Other Settings
 catalogMode: "strict"
