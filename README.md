@@ -122,6 +122,10 @@ The `Config` and `Manifest` types are exported as well.
 
 Notable changes for consumers of this package are listed in the [changelog](CHANGELOG.md).
 
+## Contributing
+
+Contributions are welcome. See the [contributing guide](CONTRIBUTING.md) for details.
+
 ## License
 
 [MIT](LICENSE) © D&D Mapp
