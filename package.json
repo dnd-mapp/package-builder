@@ -2,7 +2,7 @@
   "$schema": "https://www.schemastore.org/package.json",
   "name": "@dnd-mapp/package-builder",
   "description": "Prepares the dist directory for npm publishing across D&D Mapp projects: writes a trimmed package.json, copies consumer files, and validates exports and bin paths.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
   "author": "D&D Mapp",

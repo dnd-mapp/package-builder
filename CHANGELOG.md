@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-21
+
 ### Added
 
 - `prepare-dist` command that assembles the `dist` directory to publish. It writes a trimmed `package.json`, copies the files you include, and replaces `dist` only when every step succeeded.
@@ -15,4 +17,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Public API from the package root. It exports `loadConfig`, `createPublishManifest`, `writeManifest`, `verifyExports`, `collectExportTargets`, `collectBinTargets`, and `CONFIG_FILE`.
 - Bundled type declarations in `types.d.ts`, including the `Config` and `Manifest` types.
 
-[Unreleased]: https://github.com/dnd-mapp/package-builder/commits/main
+[Unreleased]: https://github.com/dnd-mapp/package-builder/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/dnd-mapp/package-builder/releases/tag/v1.0.0
