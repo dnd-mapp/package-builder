@@ -1,12 +1,22 @@
 {
   "$schema": "https://www.schemastore.org/package.json",
   "name": "@dnd-mapp/package-builder",
-  "description": "",
+  "description": "Prepares the dist directory for npm publishing across D&D Mapp projects: writes a trimmed package.json, copies consumer files, and validates exports and bin paths.",
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
   "author": "D&D Mapp",
-  "keywords": [],
+  "keywords": [
+    "npm",
+    "npm-package",
+    "publishing",
+    "build-tools",
+    "cli",
+    "typescript",
+    "nodejs",
+    "pnpm",
+    "dnd-mapp"
+  ],
   "homepage": "https://github.com/dnd-mapp/package-builder#readme",
   "bugs": {
     "url": "https://github.com/dnd-mapp/package-builder/issues"
