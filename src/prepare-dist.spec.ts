@@ -74,7 +74,7 @@ describe('prepare-dist', () => {
         fsMock.fail('access', new Error('ENOENT'));
 
         await expect(runScript()).rejects.toThrow(
-            'The exports field points to files that are not published: ./configs/base.yaml',
+            'The exports and bin fields point to files that are not published: ./configs/base.yaml',
         );
 
         expect(fsMock.entriesOf('rename')).toEqual([]);

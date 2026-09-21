@@ -5,5 +5,5 @@
  * `prepare-dist` script stay internal, because the script runs on import.
  */
 export { CONFIG_FILE, loadConfig, type Config } from './config.ts';
-export { collectExportTargets, verifyExports } from './exports.ts';
+export { collectBinTargets, collectExportTargets, verifyExports } from './exports.ts';
 export { createPublishManifest, writeManifest, type Manifest } from './manifest.ts';

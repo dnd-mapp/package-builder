@@ -7,6 +7,7 @@ import { withContext } from './with-context.ts';
 export interface Manifest {
     name: string;
     version: string;
+    bin?: string | Record<string, string>;
     exports?: unknown;
     publishConfig?: { directory?: string };
     [field: string]: unknown;

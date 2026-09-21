@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { consoleMock } from '../testing/console.ts';
 import { fsMock } from '../testing/fs-promises.ts';
-import { collectExportTargets, verifyExports } from './exports.ts';
+import { collectBinTargets, collectExportTargets, verifyExports } from './exports.ts';
 import type { Manifest } from './manifest.ts';
 
 describe('exports', () => {
@@ -34,11 +34,29 @@ describe('exports', () => {
         });
     });
 
+    describe('collectBinTargets', () => {
+        it('should return the string form', () => {
+            expect(collectBinTargets('./cli.js')).toEqual(['./cli.js']);
+        });
+
+        it('should return the files of the object form', () => {
+            expect(collectBinTargets({ one: './one.js', two: './two.js' })).toEqual(['./one.js', './two.js']);
+        });
+
+        it('should skip values that are not strings', () => {
+            expect(collectBinTargets({ one: './one.js', two: 42 })).toEqual(['./one.js']);
+        });
+
+        it.each([undefined, null, 42, true])('should return nothing for %s', (value) => {
+            expect(collectBinTargets(value)).toEqual([]);
+        });
+    });
+
     describe('verifyExports', () => {
         const directory = join('some', 'dir');
 
-        function createManifest(exportsField: unknown): Manifest {
-            return { name: 'package', version: '1.0.0', exports: exportsField };
+        function createManifest(exportsField: unknown, bin?: Manifest['bin']): Manifest {
+            return { name: 'package', version: '1.0.0', exports: exportsField, ...(bin && { bin }) };
         }
 
         it('should resolve when every target exists', async () => {
@@ -68,7 +86,15 @@ describe('exports', () => {
             await expect(
                 verifyExports(directory, createManifest(['./exists.yaml', './missing-1.yaml', './missing-2.yaml'])),
             ).rejects.toThrow(
-                'The exports field points to files that are not published: ./missing-1.yaml, ./missing-2.yaml',
+                'The exports and bin fields point to files that are not published: ./missing-1.yaml, ./missing-2.yaml',
+            );
+        });
+
+        it('should check the files that bin points to', async () => {
+            fsMock.fail('access', new Error('ENOENT'), ({ path }) => path.endsWith('cli.js'));
+
+            await expect(verifyExports(directory, createManifest('./index.js', { tool: './cli.js' }))).rejects.toThrow(
+                'The exports and bin fields point to files that are not published: ./cli.js',
             );
         });
 

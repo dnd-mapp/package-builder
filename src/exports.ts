@@ -22,16 +22,32 @@ export function collectExportTargets(exportsField: unknown): string[] {
 }
 
 /**
- * Checks that every file that the `exports` field points to exists in the given directory.
+ * Collects the local file paths that a `bin` field points to.
+ *
+ * Handles both the string form and the object form that maps command names to files.
+ *
+ * @param binField The value of the `bin` field.
+ * @returns The relative paths, for example `./cli.js`.
+ */
+export function collectBinTargets(binField: unknown): string[] {
+    if (typeof binField === 'string') return [binField];
+    if (binField !== null && typeof binField === 'object') {
+        return Object.values(binField).filter((target): target is string => typeof target === 'string');
+    }
+    return [];
+}
+
+/**
+ * Checks that every file that the `exports` and `bin` fields point to exists in the given directory.
  *
  * Every target is checked, so a single run reports all the missing files.
  *
  * @param directory The directory that holds the package to verify.
  * @param manifest The manifest that is published with the package.
- * @throws {Error} When one or more targets of `exports` do not exist.
+ * @throws {Error} When one or more targets of `exports` or `bin` do not exist.
  */
 export async function verifyExports(directory: string, manifest: Manifest): Promise<void> {
-    const targets = [...new Set(collectExportTargets(manifest.exports))];
+    const targets = [...new Set([...collectExportTargets(manifest.exports), ...collectBinTargets(manifest.bin)])];
     const results = await Promise.all(
         targets.map((target) =>
             access(join(directory, target)).then(
@@ -43,7 +59,7 @@ export async function verifyExports(directory: string, manifest: Manifest): Prom
     const missing = results.filter((target) => target !== null);
 
     if (missing.length > 0) {
-        throw new Error(`The exports field points to files that are not published: ${missing.join(', ')}`);
+        throw new Error(`The exports and bin fields point to files that are not published: ${missing.join(', ')}`);
     }
     console.log(`  Verified ${targets.length} export target(s)`);
 }
