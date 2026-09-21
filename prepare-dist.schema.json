@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://raw.githubusercontent.com/dnd-mapp/package-builder/main/prepare-dist.schema.json",
+    "title": "prepare-dist config",
+    "description": "Settings for the prepare-dist script, read from .prepare-distrc.json in the repository root.",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "description": "The location of this schema.",
+            "type": "string"
+        },
+        "clean": {
+            "description": "Whether the existing dist is left out of the new one. Set it to false to keep the files that are already in dist, such as build output.",
+            "type": "boolean",
+            "default": true
+        },
+        "removedFields": {
+            "description": "Fields of package.json that are left out of the published manifest. The list replaces the default.",
+            "type": "array",
+            "items": { "type": "string" },
+            "default": ["$schema", "scripts", "devDependencies", "devEngines"]
+        },
+        "include": {
+            "description": "Files and directories, relative to the repository root, that are copied into dist. The list replaces the default.",
+            "type": "array",
+            "items": { "type": "string" },
+            "default": ["configs", "CHANGELOG.md", "README.md", "LICENSE"]
+        }
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "$schema": "./prepare-dist.schema.json",
+    "clean": false,
+    "include": ["CHANGELOG.md", "README.md", "LICENSE", "prepare-dist.schema.json"]
+}
