@@ -61,7 +61,7 @@ The `build` script bundles the package with [tsdown](https://tsdown.dev) into `d
 
 Tests use Vitest. They replace `node:fs/promises` and the console with the mocks in `testing`, so no test touches the real file system. Coverage must stay above the thresholds in `vitest.config.ts`.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, and `typecheck`. Run `test-ci` and `build` yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `typecheck`, `test-ci`, and `build`. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check

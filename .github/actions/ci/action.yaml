@@ -1,5 +1,5 @@
 name: CI checks
-description: Installs dependencies, checks formatting, lints Markdown, and type checks src
+description: Installs dependencies, checks formatting, lints Markdown, type checks, tests, and builds
 
 runs:
     using: composite
@@ -22,3 +22,11 @@ runs:
         - name: Type check
           shell: bash
           run: pnpm run typecheck
+
+        - name: Test
+          shell: bash
+          run: pnpm run test-ci
+
+        - name: Build
+          shell: bash
+          run: pnpm run build
