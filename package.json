@@ -26,7 +26,8 @@
     ".": {
       "types": "./types.d.ts",
       "default": "./index.js"
-    }
+    },
+    "./prepare-dist.schema.json": "./prepare-dist.schema.json"
   },
   "scripts": {
     "prepublishOnly": "pnpm build && node src/prepare-dist.ts",
