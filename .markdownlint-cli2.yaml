@@ -1,0 +1,6 @@
+$schema: https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/refs/heads/main/schema/markdownlint-cli2-config-schema.json
+gitignore: true
+globs:
+    - "**/*.md"
+config:
+    extends: "@dnd-mapp/config-markdown/base"
