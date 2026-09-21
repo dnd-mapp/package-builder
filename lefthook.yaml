@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/evilmartians/lefthook/refs/heads/master/schema.json
+pre-commit:
+    parallel: true
+    jobs:
+        - name: prettier
+          run: pnpm exec prettier --check --ignore-unknown --no-error-on-unmatched-pattern {staged_files}
+
+        - name: markdownlint
+          glob: "*.md"
+          run: pnpm exec markdownlint-cli2 {staged_files}
+
+commit-msg:
+    jobs:
+        - name: commitlint
+          run: pnpm exec commitlint --edit {1}
