@@ -29,7 +29,7 @@
     }
   },
   "scripts": {
-    "prepublishOnly": "node src/prepare-dist.ts",
+    "prepublishOnly": "pnpm build && node src/prepare-dist.ts",
     "build": "tsdown",
     "test": "vitest --ui",
     "test-ci": "vitest run",
