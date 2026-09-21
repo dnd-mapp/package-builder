@@ -1,0 +1,23 @@
+name: Push main
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    ci:
+        name: CI
+        runs-on: ubuntu-26.04
+        timeout-minutes: 5
+        permissions:
+            contents: read
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: false
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - name: Run CI checks
+              uses: ./.github/actions/ci

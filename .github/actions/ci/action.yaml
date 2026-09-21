@@ -1,0 +1,24 @@
+name: CI checks
+description: Installs dependencies, checks formatting, lints Markdown, and type checks src
+
+runs:
+    using: composite
+    steps:
+        - name: Set up Node.js and pnpm and install dependencies
+          uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
+          with:
+              cache: true
+              runtime: node
+              require-lockfile: true
+
+        - name: Check formatting
+          shell: bash
+          run: pnpm run format-check
+
+        - name: Lint Markdown
+          shell: bash
+          run: pnpm run lint-md
+
+        - name: Type check
+          shell: bash
+          run: pnpm run typecheck
