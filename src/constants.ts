@@ -1,7 +1,12 @@
 import { join } from 'node:path';
 
-/** The root directory of the repository. */
-export const rootDir = join(import.meta.dirname, '..');
+/**
+ * The root directory of the package to prepare.
+ *
+ * It is the directory the script runs from, not the directory of this file. That way the installed executable works
+ * on the project of the consumer and not on its own files.
+ */
+export const rootDir = process.cwd();
 
 /** The directory that gets published. It is replaced on every successful run. */
 export const distDir = join(rootDir, 'dist');
