@@ -8,7 +8,7 @@ export const CONFIG_FILE = '.prepare-distrc.json';
 
 /** The settings of the script, with every default applied. */
 export interface Config {
-    /** Whether the existing `dist` is left out of the new one. */
+    /** Whether the files already in `dist` are deleted. When `false`, they are kept and the new files are added. */
     clean: boolean;
     /** Fields of `package.json` that are left out of the published manifest. */
     removedFields: string[];

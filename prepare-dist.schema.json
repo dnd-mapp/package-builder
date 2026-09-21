@@ -11,7 +11,7 @@
             "type": "string"
         },
         "clean": {
-            "description": "Whether the existing dist is left out of the new one. Set it to false to keep the files that are already in dist, such as build output.",
+            "description": "Whether the files already in dist are deleted. Set it to false to keep them, such as build output, and add the new files to them.",
             "type": "boolean",
             "default": true
         },

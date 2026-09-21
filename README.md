@@ -65,11 +65,11 @@ Create `.prepare-distrc.json` in the root of your project to change what the com
 }
 ```
 
-| Key             | Type       | Default                                                   | Description                                                          |
-|:----------------|:-----------|:----------------------------------------------------------|:---------------------------------------------------------------------|
-| `clean`         | `boolean`  | `true`                                                    | Leaves the existing `dist` out of the new one when `true`            |
-| `removedFields` | `string[]` | `["$schema", "scripts", "devDependencies", "devEngines"]` | Fields of `package.json` that are left out of the published manifest |
-| `include`       | `string[]` | `["configs", "CHANGELOG.md", "README.md", "LICENSE"]`     | Files and directories, relative to the project root, to copy         |
+| Key             | Type       | Default                                                   | Description                                                                  |
+|:----------------|:-----------|:----------------------------------------------------------|:-----------------------------------------------------------------------------|
+| `clean`         | `boolean`  | `true`                                                    | Deletes the files already in `dist` when `true`, and keeps them when `false` |
+| `removedFields` | `string[]` | `["$schema", "scripts", "devDependencies", "devEngines"]` | Fields of `package.json` that are left out of the published manifest         |
+| `include`       | `string[]` | `["configs", "CHANGELOG.md", "README.md", "LICENSE"]`     | Files and directories, relative to the project root, to copy                 |
 
 Every key is optional. A key that you leave out keeps its default. A list that you set replaces the default list, and it is not merged with it.
 
