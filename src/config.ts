@@ -77,5 +77,5 @@ export async function loadConfig(): Promise<Config> {
         }
     }
 
-    return resolve(await withContext(`Failed to parse "${CONFIG_FILE}"`, () => JSON.parse(content)));
+    return resolve(await withContext(`Failed to parse "${CONFIG_FILE}"`, () => JSON.parse(content) as unknown));
 }

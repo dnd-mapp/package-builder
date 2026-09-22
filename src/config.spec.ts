@@ -68,7 +68,7 @@ describe('loadConfig', () => {
 
         await expect(loadConfig()).rejects.toMatchObject({
             message: 'Failed to parse ".prepare-distrc.json"',
-            cause: expect.any(SyntaxError),
+            cause: expect.any(SyntaxError) as unknown,
         });
     });
 

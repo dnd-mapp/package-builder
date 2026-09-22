@@ -25,8 +25,12 @@ const manifest = {
 /** Serves the manifest and, unless it is `undefined`, the config file. Without a config file, reading it fails. */
 function respondToReads(config: object | undefined) {
     fsMock.respond('readFile', ({ path }) => {
-        if (basename(path) === 'package.json') return JSON.stringify(manifest);
-        if (config) return JSON.stringify(config);
+        if (basename(path) === 'package.json') {
+            return JSON.stringify(manifest);
+        }
+        if (config) {
+            return JSON.stringify(config);
+        }
 
         throw Object.assign(new Error('ENOENT'), { code: 'ENOENT' });
     });

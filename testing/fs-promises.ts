@@ -1,3 +1,4 @@
+import type { PathLike } from 'node:fs';
 import type * as FsPromises from 'node:fs/promises';
 
 /** A call to a function of `node:fs/promises`, recorded together with the operation that was performed. */
@@ -47,7 +48,9 @@ export const fsMock = {
         matches: Handler<Operation> = () => true,
     ): void {
         fsMock.respond(operation, (entry) => {
-            if (matches(entry)) throw error;
+            if (matches(entry)) {
+                throw error;
+            }
         });
     },
 
@@ -61,10 +64,28 @@ export const fsMock = {
     },
 };
 
-async function perform(entry: FsEntry): Promise<unknown> {
+function perform(entry: FsEntry): Promise<unknown> {
     fsMock.entries.push(entry);
+    const handler = handlers[entry.operation] as Handler<FsOperation> | undefined;
 
-    return (handlers[entry.operation] as Handler<FsOperation> | undefined)?.(entry);
+    // The executor turns a handler that throws into a rejection, like the real functions do.
+    return new Promise((resolve) => resolve(handler?.(entry)));
+}
+
+/** Records the path of a call. The code under test passes paths, so the mock does not support file handles. */
+function pathOf(path: PathLike | FsPromises.FileHandle): string {
+    if (typeof path === 'string' || path instanceof URL || path instanceof Uint8Array) {
+        return String(path);
+    }
+    throw new TypeError('The fs mock does not support file handles');
+}
+
+/** Records the data of a write. The code under test writes strings, so the mock does not support other data. */
+function dataOf(data: Parameters<typeof FsPromises.writeFile>[1]): string {
+    if (typeof data === 'string') {
+        return data;
+    }
+    throw new TypeError('The fs mock only supports string data');
 }
 
 export const access = ((path) => perform({ operation: 'access', path: String(path) })) as typeof FsPromises.access;
@@ -81,7 +102,7 @@ export const mkdir = ((path, options) =>
     perform({ operation: 'mkdir', path: String(path), options })) as typeof FsPromises.mkdir;
 
 export const readFile = ((path, options) =>
-    perform({ operation: 'readFile', path: String(path), options })) as typeof FsPromises.readFile;
+    perform({ operation: 'readFile', path: pathOf(path), options })) as typeof FsPromises.readFile;
 
 export const rename = ((source, destination) =>
     perform({
@@ -94,4 +115,4 @@ export const rm = ((path, options) =>
     perform({ operation: 'rm', path: String(path), options })) as typeof FsPromises.rm;
 
 export const writeFile = ((path, data) =>
-    perform({ operation: 'writeFile', path: String(path), data: String(data) })) as typeof FsPromises.writeFile;
+    perform({ operation: 'writeFile', path: pathOf(path), data: dataOf(data) })) as typeof FsPromises.writeFile;

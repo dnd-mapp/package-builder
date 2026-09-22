@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/@dnd-mapp/package-builder)](https://www.npmjs.com/package/@dnd-mapp/package-builder)
 [![license](https://img.shields.io/npm/l/@dnd-mapp/package-builder)](LICENSE)
 
-Prepares the `dist` directory that gets published to npm, for all D&D Mapp projects.
+Prepares the `dist` directory that gets published to npm.
 
 The tool writes a trimmed `package.json` next to your build output, copies the files that consumers need, and checks that the `exports` and `bin` fields point to files that exist.
 

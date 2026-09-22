@@ -7,7 +7,7 @@ describe('withContext', () => {
     });
 
     it('should resolve to the value of an asynchronous function', async () => {
-        await expect(withContext('failed', async () => 'done')).resolves.toBe('done');
+        await expect(withContext('failed', () => Promise.resolve('done'))).resolves.toBe('done');
     });
 
     it('should rethrow a synchronous failure with the message and the original cause', async () => {
