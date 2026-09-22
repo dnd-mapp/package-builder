@@ -1,7 +1,15 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@dnd-mapp/config-typescript/base",
-    "include": ["src", "testing", "commitlint.config.ts", "vitest.config.ts"],
+    "include": [
+        "src",
+        "testing",
+        ".prettierrc.ts",
+        "commitlint.config.ts",
+        "eslint.config.ts",
+        "tsdown.config.ts",
+        "vitest.config.ts"
+    ],
     "compilerOptions": {
         "allowImportingTsExtensions": true,
         "erasableSyntaxOnly": true,

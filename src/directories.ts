@@ -27,7 +27,9 @@ export async function copyDist(directory: string): Promise<void> {
         try {
             await cp(distDir, directory, { recursive: true });
         } catch (error) {
-            if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+            if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+                throw error;
+            }
         }
     });
 }
@@ -51,7 +53,7 @@ export async function copyIncluded(directory: string, included: string[]): Promi
             }),
         ),
     );
-    const failures = results.filter((result) => result.status === 'rejected').map((result) => result.reason);
+    const failures = results.filter((result) => result.status === 'rejected').map((result) => result.reason as unknown);
 
     if (failures.length > 0) {
         throw new AggregateError(failures, `Failed to copy ${failures.length} of ${included.length} entries`);

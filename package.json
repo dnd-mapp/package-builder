@@ -45,6 +45,7 @@
     "test": "vitest --ui",
     "test-ci": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
+    "lint-ts": "eslint",
     "lint-md": "markdownlint-cli2",
     "format": "prettier -w .",
     "format-check": "prettier -c ."
@@ -67,12 +68,14 @@
   "devDependencies": {
     "@commitlint/cli": "catalog:commitlint",
     "@dnd-mapp/config-commitlint": "catalog:commitlint",
+    "@dnd-mapp/config-eslint": "catalog:eslint",
     "@dnd-mapp/config-markdown": "catalog:markdown",
     "@dnd-mapp/config-prettier": "catalog:prettier",
     "@dnd-mapp/config-typescript": "catalog:",
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:vitest",
     "@vitest/ui": "catalog:vitest",
+    "eslint": "catalog:eslint",
     "lefthook": "catalog:commitlint",
     "markdownlint-cli2": "catalog:markdown",
     "prettier": "catalog:prettier",

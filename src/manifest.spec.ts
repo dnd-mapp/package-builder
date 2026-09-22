@@ -62,7 +62,7 @@ describe('manifest', () => {
 
             await expect(createPublishManifest(DEFAULT_REMOVED_FIELDS)).rejects.toMatchObject({
                 message: 'Failed to parse "package.json"',
-                cause: expect.any(SyntaxError),
+                cause: expect.any(SyntaxError) as unknown,
             });
         });
     });

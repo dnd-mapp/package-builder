@@ -1,5 +1,5 @@
 name: CI checks
-description: Installs dependencies, checks formatting, lints Markdown, type checks, tests, and builds
+description: Installs dependencies, checks formatting, lints Markdown and code, type checks, tests, and builds
 
 runs:
     using: composite
@@ -18,6 +18,10 @@ runs:
         - name: Lint Markdown
           shell: bash
           run: pnpm run lint-md
+
+        - name: Lint code
+          shell: bash
+          run: pnpm run lint-ts
 
         - name: Type check
           shell: bash
