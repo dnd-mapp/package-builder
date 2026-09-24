@@ -13,7 +13,7 @@ Open an [issue](https://github.com/dnd-mapp/package-builder/issues) to discuss a
 The required tool versions are enforced through `devEngines` and `engineStrict`, so installing with other versions fails.
 
 - Node `24.21.0`
-- pnpm `12.4.2`
+- pnpm `12.5.1`
 
 Install the dependencies with:
 
