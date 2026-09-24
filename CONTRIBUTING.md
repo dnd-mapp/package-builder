@@ -25,6 +25,17 @@ Dependency versions live in the catalogs in `pnpm-workspace.yaml`, which uses `c
 
 Newly published releases are held back for three days through `minimumReleaseAge`. You may need to wait before you can bump to a very recent version.
 
+## Git hooks
+
+[Lefthook](https://lefthook.dev/) installs the Git hooks when you run `pnpm install`. The hooks are defined in `lefthook.yaml`.
+
+| Hook         | Runs                                           | On                        |
+|:-------------|:-----------------------------------------------|:--------------------------|
+| `pre-commit` | Prettier, markdownlint-cli2, and ESLint checks | The staged files          |
+| `commit-msg` | commitlint                                     | The message of the commit |
+
+The pre-commit hooks only check files. Run `pnpm run format` to fix formatting issues, and `pnpm exec eslint --fix` to apply the fixes that ESLint can make. Stage the result.
+
 ## Project layout
 
 The sources live in `src`, and most modules have a `.spec.ts` file next to them.
@@ -61,18 +72,19 @@ The `build` script bundles the package with [tsdown](https://tsdown.dev) into `d
 
 Tests use Vitest. They replace `node:fs/promises` and the console with the mocks in `testing`, so no test touches the real file system. Coverage must stay above the thresholds in `vitest.config.ts`.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `typecheck`, `test-ci`, and `build`. Run them yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `test-ci`, and `build`. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check
 pnpm run format
 pnpm run lint-md
+pnpm run lint-ts
 pnpm run typecheck
 pnpm run test-ci
 pnpm run build
 ```
 
-The `lint-md` script lints the Markdown files with markdownlint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
+The `lint-md` script lints the Markdown files with markdownlint, and the `lint-ts` script lints the code with ESLint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
 
 ## Changelog and versioning
 

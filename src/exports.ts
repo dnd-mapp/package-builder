@@ -30,7 +30,9 @@ export function collectExportTargets(exportsField: unknown): string[] {
  * @returns The relative paths, for example `./cli.js`.
  */
 export function collectBinTargets(binField: unknown): string[] {
-    if (typeof binField === 'string') return [binField];
+    if (typeof binField === 'string') {
+        return [binField];
+    }
     if (binField !== null && typeof binField === 'object') {
         return Object.values(binField).filter((target): target is string => typeof target === 'string');
     }
