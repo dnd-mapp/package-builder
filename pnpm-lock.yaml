@@ -179,8 +179,8 @@ catalogs:
       specifier: ~1.0.0
       version: 1.0.0
     '@dnd-mapp/config-typescript':
-      specifier: ~1.0.0
-      version: 1.0.0
+      specifier: ~1.1.0
+      version: 1.1.0
     '@types/node':
       specifier: ~24.13.5
       version: 24.13.5
@@ -252,7 +252,7 @@ importers:
         version: 1.1.0(prettier-plugin-organize-imports@4.3.0)(prettier@3.9.8)(typescript@6.0.3)
       '@dnd-mapp/config-typescript':
         specifier: 'catalog:'
-        version: 1.0.0(typescript@6.0.3)
+        version: 1.1.0(typescript@6.0.3)
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.5
@@ -455,8 +455,8 @@ packages:
       typescript:
         optional: true
 
-  '@dnd-mapp/config-typescript@1.0.0':
-    resolution: {integrity: sha512-bnBzo47sk3NhjgdhkupU0Svte2jh3b08U/i3zdhtCDqmxzHixuDpk4DH//p9pRMdImaIWigkSu98BTeVr9L6iQ==}
+  '@dnd-mapp/config-typescript@1.1.0':
+    resolution: {integrity: sha512-3AnEQK9G3+L6vxLzqP+j9dBGKKTdCYSW5O5gWCl+6V6ds1Iz54KwTEd4QRMcCjymbkN8Lyr1kntYmJUwuCMm8A==}
     engines: {node: ^24.21.0}
     peerDependencies:
       typescript: ^6
@@ -2263,7 +2263,7 @@ snapshots:
       prettier-plugin-organize-imports: 4.3.0(prettier@3.9.8)(typescript@6.0.3)
       typescript: 6.0.3
 
-  '@dnd-mapp/config-typescript@1.0.0(typescript@6.0.3)':
+  '@dnd-mapp/config-typescript@1.1.0(typescript@6.0.3)':
     dependencies:
       typescript: 6.0.3
 
