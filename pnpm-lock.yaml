@@ -169,15 +169,15 @@ catalogs:
       specifier: ~21.2.2
       version: 21.2.2
     '@dnd-mapp/config-commitlint':
-      specifier: ~1.0.0
-      version: 1.0.0
+      specifier: ~1.1.0
+      version: 1.1.0
     lefthook:
       specifier: ~2.1.14
       version: 2.1.14
   default:
     '@dnd-mapp/changelog-tools':
-      specifier: ~1.0.0
-      version: 1.0.0
+      specifier: ~1.1.0
+      version: 1.1.0
     '@dnd-mapp/config-typescript':
       specifier: ~1.1.0
       version: 1.1.0
@@ -192,8 +192,8 @@ catalogs:
       version: 6.0.3
   eslint:
     '@dnd-mapp/config-eslint':
-      specifier: ~1.0.0
-      version: 1.0.0
+      specifier: ~1.1.0
+      version: 1.1.0
     eslint:
       specifier: ~10.11.0
       version: 10.11.0
@@ -237,13 +237,13 @@ importers:
         version: 21.2.2(@types/node@24.13.5)(conventional-commits-parser@7.1.2)(typescript@6.0.3)
       '@dnd-mapp/changelog-tools':
         specifier: 'catalog:'
-        version: 1.0.0
+        version: 1.1.0
       '@dnd-mapp/config-commitlint':
         specifier: catalog:commitlint
-        version: 1.0.0(@commitlint/cli@21.2.2)
+        version: 1.1.0(@commitlint/cli@21.2.2)
       '@dnd-mapp/config-eslint':
         specifier: catalog:eslint
-        version: 1.0.0(eslint@10.11.0)(typescript@6.0.3)
+        version: 1.1.0(eslint@10.11.0)(typescript@6.0.3)
       '@dnd-mapp/config-markdown':
         specifier: catalog:markdown
         version: 1.0.0(markdownlint-cli2@0.23.2)
@@ -409,19 +409,19 @@ packages:
     resolution: {integrity: sha512-aalGyl7dbB5PArRebDIX43ZvBlXrYm9uWzGJ26t+4SzJVPsOuvfILGGbw5X4yX7i50YEmJ8zvbiWnqH/AAnZqg==}
     engines: {node: '>=22'}
 
-  '@dnd-mapp/changelog-tools@1.0.0':
-    resolution: {integrity: sha512-f8WnQ0SSKS/iNloOwF6TuDpMp/TFAlgb2oxKJ1n/fz8LpDY+KPvKfLyeer7XzAWDVCxDHfIb9p05Vh0PcRMm+A==}
+  '@dnd-mapp/changelog-tools@1.1.0':
+    resolution: {integrity: sha512-V4McNYmJitQ2byYCDJGX7RbogXWD6zu16UgyBVbUw0uwvFdyaeDZYLp1jjmoCNkyjuFCLHu4+CtTlMBsmS7+rg==}
     engines: {node: ^24.21.0}
     hasBin: true
 
-  '@dnd-mapp/config-commitlint@1.0.0':
-    resolution: {integrity: sha512-7O00LZBgbMj6sbWWVr14RqsatyqsaxBnIAnaFW8pH1Fwd3aSVWQNjUC0vMNgw4vTERX/f56mrfxvvQZ/kxmN7g==}
+  '@dnd-mapp/config-commitlint@1.1.0':
+    resolution: {integrity: sha512-9v7c7LZ/uy5MCHkhqVZ7Bg8FPV2Omg3n3jhVeNE+0A55UyyLfIi+bhh30Cf5troM+5KEPB7hHpTNiI63JOq0Wg==}
     engines: {node: ^24.21.0}
     peerDependencies:
       '@commitlint/cli': ^21
 
-  '@dnd-mapp/config-eslint@1.0.0':
-    resolution: {integrity: sha512-uLM2vfmgg/iFgaSekuW74FDstuaGLEtwCW2NvuITuoSnYpl8oobrQiISYKAaEr7jEux7EoToyFH5AL2yjbvsDg==}
+  '@dnd-mapp/config-eslint@1.1.0':
+    resolution: {integrity: sha512-gyW/nvd3NtWjXlzGjo8ZSm/GwtvIiYaOh8p8jZChrC7sWZGMKaH0a4OXm2+QIruAy0nGgsE2tMoR5zZ3xvQrYQ==}
     engines: {node: ^24.21.0}
     peerDependencies:
       eslint: ^10
@@ -2234,14 +2234,14 @@ snapshots:
 
   '@conventional-changelog/template@1.4.0': {}
 
-  '@dnd-mapp/changelog-tools@1.0.0': {}
+  '@dnd-mapp/changelog-tools@1.1.0': {}
 
-  '@dnd-mapp/config-commitlint@1.0.0(@commitlint/cli@21.2.2)':
+  '@dnd-mapp/config-commitlint@1.1.0(@commitlint/cli@21.2.2)':
     dependencies:
       '@commitlint/cli': 21.2.2(@types/node@24.13.5)(conventional-commits-parser@7.1.2)(typescript@6.0.3)
       '@commitlint/config-conventional': 21.2.2
 
-  '@dnd-mapp/config-eslint@1.0.0(eslint@10.11.0)(typescript@6.0.3)':
+  '@dnd-mapp/config-eslint@1.1.0(eslint@10.11.0)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.11.0)
       eslint: 10.11.0(jiti@2.6.1)
