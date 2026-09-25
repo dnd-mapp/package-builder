@@ -10,7 +10,7 @@ The tool writes a trimmed `package.json` next to your build output, copies the f
 
 ## Requirements
 
-- Node.js 24.21 or a later 24.x release, matching the `engines` field.
+- A Node.js version that matches the `engines` field of the package.
 - A package that publishes from a `dist` directory, with `publishConfig.directory` set to `dist`.
 
 ## Installation
