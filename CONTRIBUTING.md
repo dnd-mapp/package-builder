@@ -26,7 +26,7 @@ Install [actionlint](https://github.com/rhysd/actionlint) to lint the workflows 
 
 ## Git hooks
 
-[Lefthook](https://lefthook.dev/) installs the Git hooks when you run `pnpm install`. The hooks are defined in `lefthook.yaml`.
+[Lefthook](https://lefthook.dev/) installs the Git hooks when you run `pnpm install`. The hooks are defined in `lefthook.yaml`. `pnpm-workspace.yaml` turns off the side-effects cache of pnpm, because a cached build of lefthook skips the script that installs the hooks. If the hooks are still missing, install them with `pnpm exec lefthook install`.
 
 | Hook         | Runs                                           | On                        |
 |:-------------|:-----------------------------------------------|:--------------------------|
