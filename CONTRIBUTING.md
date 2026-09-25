@@ -10,10 +10,7 @@ Open an [issue](https://github.com/dnd-mapp/package-builder/issues) to discuss a
 
 ## Development setup
 
-The required tool versions are enforced through `devEngines` and `engineStrict`, so installing with other versions fails.
-
-- Node `24.21.0`
-- pnpm `12.5.1`
+The required Node and pnpm versions are set in `devEngines` in `package.json`. They are enforced through `engineStrict`, so installing with other versions fails.
 
 Install the dependencies with:
 
@@ -24,6 +21,8 @@ pnpm install
 Dependency versions live in the catalogs in `pnpm-workspace.yaml`, which uses `catalogMode: strict`. Add or bump versions there and reference them in `package.json`. Use `catalog:` for the default catalog and a named catalog such as `catalog:vitest` for a group of tools.
 
 Newly published releases are held back for three days through `minimumReleaseAge`. You may need to wait before you can bump to a very recent version.
+
+Install [actionlint](https://github.com/rhysd/actionlint) to lint the workflows locally, for example with `brew install actionlint`. CI runs the version that `.github/actions/ci/action.yaml` pins.
 
 ## Git hooks
 
@@ -72,7 +71,7 @@ The `build` script bundles the package with [tsdown](https://tsdown.dev) into `d
 
 Tests use Vitest. They replace `node:fs/promises` and the console with the mocks in `testing`, so no test touches the real file system. Coverage must stay above the thresholds in `vitest.config.ts`.
 
-Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `test-ci`, and `build`. Run them yourself before you open a pull request.
+Check and format the repository with these commands. CI runs `format-check`, `lint-md`, `lint-ts`, `typecheck`, `test-ci`, `build`, and actionlint. Run them yourself before you open a pull request.
 
 ```bash
 pnpm run format-check
@@ -82,6 +81,7 @@ pnpm run lint-ts
 pnpm run typecheck
 pnpm run test-ci
 pnpm run build
+actionlint
 ```
 
 The `lint-md` script lints the Markdown files with markdownlint, and the `lint-ts` script lints the code with ESLint. Use `pnpm test` to run the tests in watch mode with the Vitest UI.
@@ -151,7 +151,8 @@ Write the description in the imperative mood, such as "check bin targets". Mark 
 - Update the changelog and README in the same pull request.
 - Use a title that follows the commit convention.
 - If you have write access, turn on auto-merge once the pull request is open, with `gh pr merge <number> --auto --merge` or the "Enable auto-merge" button. It then merges as soon as it is approved and the checks pass.
-- If auto-merge is off, the author merges the pull request once it is approved and the checks pass. A maintainer merges pull requests opened by a bot or by a contributor without write access.
+- If auto-merge is off, the author merges the pull request once it is approved and the checks pass. A maintainer merges pull requests opened by a contributor without write access.
+- Renovate merges its own minor and patch pull requests once the checks pass. A maintainer approves a major update from Renovate and turns on auto-merge for it.
 - Update the branch when it falls behind `main`, because auto-merge waits until the branch is up to date. The update dismisses the approval, so the pull request needs a new review.
 
 ## License
