@@ -16,6 +16,7 @@ engineStrict: true
 # Build Settings
 allowBuilds:
   lefthook: true
+sideEffectsCache: false
 
 # Other Settings
 catalogMode: "strict"
