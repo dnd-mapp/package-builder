@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "@dnd-mapp/config-typescript/base",
+    "extends": "@dnd-mapp/config-typescript/node",
     "include": [
         "src",
         "testing",
@@ -13,11 +13,7 @@
     "compilerOptions": {
         "allowImportingTsExtensions": true,
         "erasableSyntaxOnly": true,
-        "lib": ["ES2025"],
-        "module": "nodenext",
         "noEmit": true,
-        "target": "es2024",
-        "types": ["node"],
         "verbatimModuleSyntax": true
     }
 }
