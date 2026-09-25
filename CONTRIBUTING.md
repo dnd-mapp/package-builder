@@ -150,6 +150,9 @@ Write the description in the imperative mood, such as "check bin targets". Mark 
 - Link the issue it addresses.
 - Update the changelog and README in the same pull request.
 - Use a title that follows the commit convention.
+- If you have write access, turn on auto-merge once the pull request is open, with `gh pr merge <number> --auto --merge` or the "Enable auto-merge" button. It then merges as soon as it is approved and the checks pass.
+- If auto-merge is off, the author merges the pull request once it is approved and the checks pass. A maintainer merges pull requests opened by a bot or by a contributor without write access.
+- Update the branch when it falls behind `main`, because auto-merge waits until the branch is up to date. The update dismisses the approval, so the pull request needs a new review.
 
 ## License
 
