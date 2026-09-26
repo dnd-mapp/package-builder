@@ -1,0 +1,43 @@
+name: Prepare release
+
+on:
+    workflow_dispatch:
+        inputs:
+            bump:
+                description: Part of the version to bump
+                required: true
+                type: choice
+                options:
+                    - patch
+                    - minor
+                    - major
+
+permissions: {}
+
+jobs:
+    prepare:
+        name: Prepare release
+        runs-on: ubuntu-26.04
+        timeout-minutes: 5
+        permissions:
+            contents: read
+        concurrency:
+            group: ${{ github.workflow }}
+            cancel-in-progress: false
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+            - name: Set up Node.js and pnpm and install dependencies
+              uses: pnpm/setup@703c52620218391530e48b9e8870d5c0082e1b9b # v2.1.0
+              with:
+                  cache: true
+                  runtime: node
+                  require-lockfile: true
+
+            - name: Open the release pull request
+              uses: dnd-mapp/action-prepare-release@b316f1698ace141b667c3a6f6949937da48fbe17 # v1.1.0
+              with:
+                  bump: ${{ inputs.bump }}
+                  client-id: ${{ vars.GH_APP_CLIENT_ID }}
+                  private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
