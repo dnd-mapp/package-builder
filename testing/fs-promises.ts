@@ -101,7 +101,7 @@ export const cp = ((source, destination, options) =>
 export const mkdir = ((path, options) =>
     perform({ operation: 'mkdir', path: String(path), options })) as typeof FsPromises.mkdir;
 
-export const readFile = ((path, options) =>
+export const readFile = ((path: PathLike | FsPromises.FileHandle, options?: unknown) =>
     perform({ operation: 'readFile', path: pathOf(path), options })) as typeof FsPromises.readFile;
 
 export const rename = ((source, destination) =>
