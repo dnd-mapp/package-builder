@@ -31,7 +31,7 @@ catalogs:
   commitlint:
     "@commitlint/cli": ~21.2.3
     "@dnd-mapp/config-commitlint": ~1.1.0
-    lefthook: ~2.1.14
+    lefthook: ~2.1.16
   eslint:
     "@dnd-mapp/config-eslint": ~1.1.0
     eslint: ~10.11.0
@@ -43,7 +43,7 @@ catalogs:
     prettier: ~3.9.9
     prettier-plugin-organize-imports: ~4.3.0
   vitest:
-    "@vitest/coverage-v8": ~5.0.1
-    "@vitest/ui": ~5.0.1
-    vite: ~8.3.1
-    vitest: ~5.0.1
+    "@vitest/coverage-v8": ~5.0.3
+    "@vitest/ui": ~5.0.3
+    vite: ~8.3.2
+    vitest: ~5.0.3
