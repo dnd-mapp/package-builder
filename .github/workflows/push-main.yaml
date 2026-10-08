@@ -28,7 +28,7 @@ jobs:
         timeout-minutes: 5
         permissions: {}
         concurrency:
-            group: ${{ github.workflow }}-${{ github.job }}
+            group: ${{ github.workflow }}-tag
             cancel-in-progress: false
         steps:
             - name: Tag the release
