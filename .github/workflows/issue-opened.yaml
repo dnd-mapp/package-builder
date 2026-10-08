@@ -1,0 +1,32 @@
+name: Issue opened
+
+on:
+    issues:
+        types:
+            - opened
+            - reopened
+
+permissions: {}
+
+jobs:
+    add-to-project:
+        name: Add to project
+        runs-on: ubuntu-26.04
+        timeout-minutes: 2
+        permissions: {}
+        steps:
+            # GITHUB_TOKEN cannot write to an organization project, so this mints a token of the dnd-mapp GitHub App.
+            - name: Create a GitHub App token
+              id: app-token
+              uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+              with:
+                  client-id: ${{ vars.GH_APP_CLIENT_ID }}
+                  private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+                  permission-organization-projects: write
+
+            # The project's own workflows set the status of the new item to Triage.
+            - name: Add the issue to the D&D Mapp project
+              uses: actions/add-to-project@5afcf98fcd03f1c2f92c3c83f58ae24323cc57fd # v2.0.0
+              with:
+                  project-url: https://github.com/orgs/dnd-mapp/projects/10
+                  github-token: ${{ steps.app-token.outputs.token }}
