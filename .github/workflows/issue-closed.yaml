@@ -1,0 +1,29 @@
+name: Issue closed
+
+on:
+    issues:
+        types:
+            - closed
+
+permissions: {}
+
+jobs:
+    remove-assignees:
+        name: Remove assignees
+        # An issue without assignees, such as the Dependency Dashboard of Renovate, has nothing to remove.
+        if: github.event.issue.assignees[0] != null
+        runs-on: ubuntu-26.04
+        timeout-minutes: 2
+        permissions:
+            issues: write
+        steps:
+            # Runs whatever the close reason, so an issue closed as not planned loses its assignees too. A reopened
+            # issue stays unassigned until someone picks it up again.
+            - name: "Remove the assignees of issue #${{ github.event.issue.number }}"
+              shell: bash
+              run: gh issue edit "$ISSUE_NUMBER" --remove-assignee "$ASSIGNEES"
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  GH_REPO: ${{ github.repository }}
+                  ISSUE_NUMBER: ${{ github.event.issue.number }}
+                  ASSIGNEES: ${{ join(github.event.issue.assignees.*.login, ',') }}
